@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Les films</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_films.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -12,7 +15,7 @@
         	<nav>
             	<ul>
                 	<li><a href="index.html">Accueil</a></li>
-			<li><a href="presentation.html">C'est qui Pulsar Pesto ?</a></li>
+			<li><a href="presentation.html">Présentation</a></li>
                 	<li><a href="top_10.html">Le TOP 10</a></li>
                 	<li><a href="contact.html">Contact</a></li>
             	</ul>
@@ -24,8 +27,19 @@
 		<h1>Alors, ils étaient bien ces films ou pas ?</h1>
 	</div>
     
-    <p>Contenu</p>
+	<div class="films-grid">
 
+    <a href="critiques_films/fjord_2026/fjord.html" class="box_fjord">
+		<div class="fjord-img">
+			<img src="critiques_films/fjord_2026/img/img1.PNG">
+			<img src="critiques_films/fjord_2026/img/img2.jpg">
+			<img src="critiques_films/fjord_2026/img/img3.jpg">
+			<img src="critiques_films/fjord_2026/img/img4.PNG">
+		</div>
+        <h2>fjord</h2>
+    </a>
+
+	</div>
 
     <a href="index.html">← Retour à l'accueil</a>
 
@@ -34,6 +48,44 @@
 	<footer>
         	<p>© 2026 - Pulsar Pesto critique !</p>
     	</footer>
+	<script>
+const box = document.querySelector('.box_fjord');
+const images = document.querySelectorAll('.fjord-img img');
+
+let currentImage = 0;
+let interval;
+
+box.addEventListener('mouseenter', () => {
+
+    images[currentImage].style.opacity = 0;
+
+    currentImage = (currentImage + 1) % images.length;
+
+    images[currentImage].style.opacity = 1;
+
+    interval = setInterval(() => {
+
+        images[currentImage].style.opacity = 0;
+
+        currentImage = (currentImage + 1) % images.length;
+
+        images[currentImage].style.opacity = 1;
+
+    }, 3000);
+});
+
+box.addEventListener('mouseleave', () => {
+
+    clearInterval(interval);
+
+    images.forEach(img => {
+        img.style.opacity = 0;
+    });
+
+	images[0].style.opacity = 1;
+    currentImage = 0;
+});
+</script>
 </body>
 </html>
 
